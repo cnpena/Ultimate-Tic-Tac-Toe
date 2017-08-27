@@ -26,19 +26,19 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="lco-rG-s7M" userLabel="large board">
                                 <rect key="frame" x="-0.5" y="145.5" width="375" height="375"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="cTj-ZC-9jd" userLabel="1">
+                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="cTj-ZC-9jd" userLabel="1">
                                 <rect key="frame" x="0.0" y="146" width="125" height="125"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="QhE-vu-EbD" userLabel="2">
+                            <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="QhE-vu-EbD" userLabel="2">
                                 <rect key="frame" x="125" y="146" width="125" height="125"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="NI8-7F-k4V" userLabel="3">
+                            <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="NI8-7F-k4V" userLabel="3">
                                 <rect key="frame" x="250" y="145.5" width="125" height="125"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="CMj-lK-VCE" userLabel="4">
+                            <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="CMj-lK-VCE" userLabel="4">
                                 <rect key="frame" x="0.0" y="271" width="125" height="125"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="mms-02-52U" userLabel="5">
+                            <imageView userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="mms-02-52U" userLabel="5">
                                 <rect key="frame" x="125" y="271" width="125" height="125"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vwZ-t4-eER">
@@ -76,18 +76,24 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="6vu-S2-uhN" userLabel="6">
+                            <imageView userInteractionEnabled="NO" tag="6" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="6vu-S2-uhN" userLabel="6">
                                 <rect key="frame" x="250" y="270.5" width="125" height="125"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="LmF-ew-hip" userLabel="7">
+                            <imageView userInteractionEnabled="NO" tag="7" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="LmF-ew-hip" userLabel="7">
                                 <rect key="frame" x="0.0" y="396" width="125" height="125"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="IAg-rj-uQL" userLabel="8">
+                            <imageView userInteractionEnabled="NO" tag="8" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="IAg-rj-uQL" userLabel="8">
                                 <rect key="frame" x="125" y="396" width="125" height="125"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="Z3i-Ku-TXS" userLabel="9">
+                            <imageView userInteractionEnabled="NO" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="Z3i-Ku-TXS" userLabel="9">
                                 <rect key="frame" x="250" y="395.5" width="125" height="125"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7f-CF-1cT">
+                                <rect key="frame" x="187" y="553" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -96,6 +102,7 @@
                             <constraint firstItem="QhE-vu-EbD" firstAttribute="width" secondItem="mms-02-52U" secondAttribute="width" id="1pG-sZ-VaG"/>
                             <constraint firstItem="CMj-lK-VCE" firstAttribute="top" secondItem="cTj-ZC-9jd" secondAttribute="bottom" id="3y6-Kr-n7U"/>
                             <constraint firstItem="IAg-rj-uQL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Gn-bU-t4m"/>
+                            <constraint firstItem="O7f-CF-1cT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4QJ-21-jbb"/>
                             <constraint firstItem="CMj-lK-VCE" firstAttribute="width" secondItem="mms-02-52U" secondAttribute="width" id="6fu-1Q-Hoi"/>
                             <constraint firstItem="mms-02-52U" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1/3" id="91y-0i-FSn"/>
                             <constraint firstItem="6vu-S2-uhN" firstAttribute="height" secondItem="mms-02-52U" secondAttribute="height" id="CZD-rX-LMh"/>
@@ -116,6 +123,7 @@
                             <constraint firstItem="IAg-rj-uQL" firstAttribute="width" secondItem="mms-02-52U" secondAttribute="width" id="VqE-Fh-kzg"/>
                             <constraint firstItem="6vu-S2-uhN" firstAttribute="width" secondItem="mms-02-52U" secondAttribute="width" id="VvY-Xa-ark"/>
                             <constraint firstItem="vwZ-t4-eER" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XTv-pc-Amx"/>
+                            <constraint firstItem="O7f-CF-1cT" firstAttribute="top" secondItem="IAg-rj-uQL" secondAttribute="bottom" constant="32" id="XsP-WH-6MV"/>
                             <constraint firstItem="CMj-lK-VCE" firstAttribute="height" secondItem="mms-02-52U" secondAttribute="height" id="Y1Y-vv-Lwv"/>
                             <constraint firstItem="mms-02-52U" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1/3" id="YAA-Dl-HHt"/>
                             <constraint firstItem="cTj-ZC-9jd" firstAttribute="height" secondItem="mms-02-52U" secondAttribute="height" id="ZlG-ob-QJT"/>
@@ -139,6 +147,7 @@
                     </view>
                     <connections>
                         <outlet property="board" destination="vwZ-t4-eER" id="dOU-Ox-yBk"/>
+                        <outlet property="displayWinnerLabel" destination="O7f-CF-1cT" id="IYR-5p-M6a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
