@@ -14,6 +14,7 @@
 		C86B10A11F520B330068C795 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86B109F1F520B330068C795 /* LaunchScreen.storyboard */; };
 		C86B10AC1F520B330068C795 /* Ultimate_Tic_Tac_ToeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86B10AB1F520B330068C795 /* Ultimate_Tic_Tac_ToeTests.swift */; };
 		C86B10B71F520B330068C795 /* Ultimate_Tic_Tac_ToeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86B10B61F520B330068C795 /* Ultimate_Tic_Tac_ToeUITests.swift */; };
+		C86B10C91F520F6A0068C795 /* boardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86B10C81F520F6A0068C795 /* boardCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		C86B10B21F520B330068C795 /* Ultimate Tic Tac ToeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ultimate Tic Tac ToeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86B10B61F520B330068C795 /* Ultimate_Tic_Tac_ToeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ultimate_Tic_Tac_ToeUITests.swift; sourceTree = "<group>"; };
 		C86B10B81F520B330068C795 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C86B10C81F520F6A0068C795 /* boardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = boardCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				C86B10961F520B330068C795 /* AppDelegate.swift */,
 				C86B10981F520B330068C795 /* ViewController.swift */,
+				C86B10C81F520F6A0068C795 /* boardCell.swift */,
 				C86B109A1F520B330068C795 /* Main.storyboard */,
 				C86B109D1F520B330068C795 /* Assets.xcassets */,
 				C86B109F1F520B330068C795 /* LaunchScreen.storyboard */,
@@ -261,6 +264,7 @@
 			files = (
 				C86B10991F520B330068C795 /* ViewController.swift in Sources */,
 				C86B10971F520B330068C795 /* AppDelegate.swift in Sources */,
+				C86B10C91F520F6A0068C795 /* boardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
