@@ -8,14 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class gameVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var displayWinnerLabel: UILabel!
     @IBOutlet weak var board: UICollectionView!
+    @IBOutlet weak var playAgainButton: UIButton!
     var activePlayer = 1 //player 1 = x, player 2 = o (initially x)
     var gameIsActive = true //true while game is playing, false when player wins or draws
     var gameState = [[Int]](repeating: [Int](repeating: 0, count: 9), count: 9)
     var overallBoard = [0,0,0,0,0,0,0,0,0]
+    var activeBoard = -1
     
     let winningBoards = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
     
@@ -24,12 +26,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.board.dataSource = self
         self.board.delegate = self
         board.allowsMultipleSelection = true
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -48,32 +44,45 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return CGSize(width: cellWidth, height: cellWidth)
     }
     
+    //called when the player taps any of the 81 squares on the screen
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! boardCell
+        
         let square = indexPath.row
         let col = square%3
         let row = (square/9)%3
         let index = row*3+col
         let board = findBoard(square: square)
     
-        
-        if(gameState[board][index] == 0 && gameIsActive){
-            gameState[board][index] = activePlayer
+        //before placing a piece, check if the square is empty, the game is still active and this is the allowed board to work on (or this is the first turn)
+        if(gameState[board][index] == 0 && gameIsActive && (board == activeBoard || activeBoard == -1)){
+            gameState[board][index] = activePlayer //update gameState w/ 1 or 2 to indicate who placed their piece
+            
+            if let smallGame = self.view.viewWithTag(activeBoard+1) as? UIImageView { //clear the previous active board so it's no longer highlighted
+                smallGame.backgroundColor = UIColor.clear
+            }
+            
+            activeBoard = index //the new active board is the index selected in the smaller board
+            
+            if let smallGame = self.view.viewWithTag(activeBoard+1) as? UIImageView { //highlight the new active board
+                    smallGame.backgroundColor = UIColor.yellow.withAlphaComponent(0.3)
+            }
             
             if(activePlayer == 1){
-                cell.marker.image = #imageLiteral(resourceName: "x") //set image inside square based on game design the user chose initially
+                cell.marker.image = #imageLiteral(resourceName: "x") //place x in the square picked
                 activePlayer = 2 //switch active player to player 2
             }else{
-                cell.marker.image = #imageLiteral(resourceName: "o") //set image inside square based on game design the user chose initially
+                cell.marker.image = #imageLiteral(resourceName: "o") //place o in the square picked
                 activePlayer = 1 //switch active player to player 1
             }
         }
         
-        for i in winningBoards{ //checks current board against winning combinations
+        for i in winningBoards{ //checks current board against winning combinations (in smaller board)
             if (gameState[board][i[0]] != 0 && gameState[board][i[0]] == gameState[board][i[1]] && gameState[board][i[1]] == gameState[board][i[2]]){ //someone has won smaller game
                 
-                overallBoard[board] = gameState[board][i[0]]
-                if let smallGame = self.view.viewWithTag(board+1) as? UIImageView {
+                overallBoard[board] = gameState[board][i[0]] //update overallBoard w/ 1 or 2 to indicate who won smaller board
+                
+                if let smallGame = self.view.viewWithTag(board+1) as? UIImageView { //instead of smalller board, shows an X or O to show who won
                     if (overallBoard[board] == 1){
                         smallGame.image = #imageLiteral(resourceName: "x")
                     }else{
@@ -81,8 +90,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     }
                 }
                 
-                for x in winningBoards{ //checks current board against winning combinations
-                    if (overallBoard[x[0]] != 0 && overallBoard[x[0]] == overallBoard[x[1]] && overallBoard[x[1]] == overallBoard[x[2]]){
+                //check to see if anyone has won overall game (only needs to be called when someone wins a smaller game
+                for x in winningBoards{ //checks current board against winning combinations (overall board)
+                    if (overallBoard[x[0]] != 0 && overallBoard[x[0]] == overallBoard[x[1]] && overallBoard[x[1]] == overallBoard[x[2]]){ //someone has won overall game
                         
                         if(overallBoard[0] == 1){
                             displayWinnerLabel.text = "Player 1 wins!"
@@ -91,16 +101,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         }
                     
                         //someone has won, so show button to play again, game is no longer active
-                        //playAgainButton.isHidden = false
+                        playAgainButton.isHidden = false
                         gameIsActive = false
                         return
                     }
-                } //end for board in winningBoards()
-                
+                } //end for x in winningBoards()
             }
         } //end for i in winningBoards()
-        
     }
+    
     
     func findBoard(square: Int) -> Int{
         if(square < 27){

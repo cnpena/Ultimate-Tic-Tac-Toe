@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C86B10971F520B330068C795 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86B10961F520B330068C795 /* AppDelegate.swift */; };
-		C86B10991F520B330068C795 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86B10981F520B330068C795 /* ViewController.swift */; };
+		C86B10991F520B330068C795 /* gameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86B10981F520B330068C795 /* gameVC.swift */; };
 		C86B109C1F520B330068C795 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86B109A1F520B330068C795 /* Main.storyboard */; };
 		C86B109E1F520B330068C795 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C86B109D1F520B330068C795 /* Assets.xcassets */; };
 		C86B10A11F520B330068C795 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86B109F1F520B330068C795 /* LaunchScreen.storyboard */; };
@@ -37,7 +37,7 @@
 /* Begin PBXFileReference section */
 		C86B10931F520B320068C795 /* Ultimate Tic Tac Toe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ultimate Tic Tac Toe.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86B10961F520B330068C795 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C86B10981F520B330068C795 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C86B10981F520B330068C795 /* gameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameVC.swift; sourceTree = "<group>"; };
 		C86B109B1F520B330068C795 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C86B109D1F520B330068C795 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C86B10A01F520B330068C795 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				C86B10961F520B330068C795 /* AppDelegate.swift */,
-				C86B10981F520B330068C795 /* ViewController.swift */,
+				C86B10981F520B330068C795 /* gameVC.swift */,
 				C86B10C81F520F6A0068C795 /* boardCell.swift */,
 				C86B109A1F520B330068C795 /* Main.storyboard */,
 				C86B109D1F520B330068C795 /* Assets.xcassets */,
@@ -262,7 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C86B10991F520B330068C795 /* ViewController.swift in Sources */,
+				C86B10991F520B330068C795 /* gameVC.swift in Sources */,
 				C86B10971F520B330068C795 /* AppDelegate.swift in Sources */,
 				C86B10C91F520F6A0068C795 /* boardCell.swift in Sources */,
 			);
@@ -511,6 +511,7 @@
 				C86B10BD1F520B330068C795 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C86B10BE1F520B330068C795 /* Build configuration list for PBXNativeTarget "Ultimate Tic Tac ToeTests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +520,7 @@
 				C86B10C01F520B330068C795 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C86B10C11F520B330068C795 /* Build configuration list for PBXNativeTarget "Ultimate Tic Tac ToeUITests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +529,7 @@
 				C86B10C31F520B330068C795 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
