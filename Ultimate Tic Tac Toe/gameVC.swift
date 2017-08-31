@@ -110,6 +110,23 @@ class gameVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         } //end for i in winningBoards()
     }
     
+    @IBAction func playAgain(_ sender: UIButton) {
+        gameIsActive = true
+        gameState = [[Int]](repeating: [Int](repeating: 0, count: 9), count: 9) //resets game Board
+        playAgainButton.isHidden = true
+        
+        
+        displayWinnerLabel.text = " "
+        for i in 1 ... 9 {
+            if let smallGame = self.view.viewWithTag(i) as? UIImageView { //instead of smalller board, shows an X or O to show who won
+                
+                    smallGame.image = #imageLiteral(resourceName: "board")
+            }
+        
+        }
+        overallBoard = [0,0,0,0,0,0,0,0,0]
+            activePlayer = 1    // TODO: to loser goes first later
+    }
     
     func findBoard(square: Int) -> Int{
         if(square < 27){
