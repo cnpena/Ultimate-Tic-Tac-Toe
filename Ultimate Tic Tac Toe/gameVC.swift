@@ -81,6 +81,7 @@ class gameVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             if (gameState[board][i[0]] != 0 && gameState[board][i[0]] == gameState[board][i[1]] && gameState[board][i[1]] == gameState[board][i[2]]){ //someone has won smaller game
                 
                 overallBoard[board] = gameState[board][i[0]] //update overallBoard w/ 1 or 2 to indicate who won smaller board
+                activeBoard = -1 //set active board to -1 so the player can choose any board
                 
                 if let smallGame = self.view.viewWithTag(board+1) as? UIImageView { //instead of smalller board, shows an X or O to show who won
                     if (overallBoard[board] == 1){
