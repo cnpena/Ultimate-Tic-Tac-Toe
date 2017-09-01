@@ -17,8 +17,9 @@ class gameVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     var gameIsActive = true //true while game is playing, false when player wins or draws
     var gameState = [[Int]](repeating: [Int](repeating: 0, count: 9), count: 9)
     var overallBoard = [0,0,0,0,0,0,0,0,0]
-    var activeBoard = -1
-    
+    var activeBoard = 9
+    var playAgain = false
+    let icons = [#imageLiteral(resourceName: "x"), #imageLiteral(resourceName: "o")]
     let winningBoards = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
     
     override func viewDidLoad() {
@@ -35,6 +36,9 @@ class gameVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "board", for: indexPath) as! boardCell
+        if(playAgain){
+            cell.marker.image = nil
+        }
         return cell
     }
     
@@ -55,24 +59,28 @@ class gameVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         let board = findBoard(square: square)
     
         //before placing a piece, check if the square is empty, the game is still active and this is the allowed board to work on (or this is the first turn)
-        if(gameState[board][index] == 0 && gameIsActive && (board == activeBoard || activeBoard == -1)){
+        if(gameState[board][index] == 0 && gameIsActive && (board == activeBoard || activeBoard == 9)){
             gameState[board][index] = activePlayer //update gameState w/ 1 or 2 to indicate who placed their piece
             
             if let smallGame = self.view.viewWithTag(activeBoard+1) as? UIImageView { //clear the previous active board so it's no longer highlighted
                 smallGame.backgroundColor = UIColor.clear
             }
             
-            activeBoard = index //the new active board is the index selected in the smaller board
-            
+            if(overallBoard[index] > 0){
+                activeBoard = 9
+            }else{
+                activeBoard = index //the new active board is the index selected in the smaller board
+            }
             if let smallGame = self.view.viewWithTag(activeBoard+1) as? UIImageView { //highlight the new active board
                     smallGame.backgroundColor = UIColor.yellow.withAlphaComponent(0.3)
             }
             
+            cell.marker.image = icons[activePlayer-1]
             if(activePlayer == 1){
-                cell.marker.image = #imageLiteral(resourceName: "x") //place x in the square picked
+                //cell.marker.image = #imageLiteral(resourceName: "x") //place x in the square picked
                 activePlayer = 2 //switch active player to player 2
             }else{
-                cell.marker.image = #imageLiteral(resourceName: "o") //place o in the square picked
+                //cell.marker.image = #imageLiteral(resourceName: "o") //place o in the square picked
                 activePlayer = 1 //switch active player to player 1
             }
         }
@@ -81,14 +89,15 @@ class gameVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             if (gameState[board][i[0]] != 0 && gameState[board][i[0]] == gameState[board][i[1]] && gameState[board][i[1]] == gameState[board][i[2]]){ //someone has won smaller game
                 
                 overallBoard[board] = gameState[board][i[0]] //update overallBoard w/ 1 or 2 to indicate who won smaller board
-                activeBoard = -1 //set active board to -1 so the player can choose any board
+                activeBoard = 9 //set active board to -1 so the player can choose any board
                 
                 if let smallGame = self.view.viewWithTag(board+1) as? UIImageView { //instead of smalller board, shows an X or O to show who won
-                    if (overallBoard[board] == 1){
-                        smallGame.image = #imageLiteral(resourceName: "x")
-                    }else{
-                        smallGame.image = #imageLiteral(resourceName: "o")
-                    }
+                    smallGame.image = icons[overallBoard[board]-1]
+//                    if (overallBoard[board] == 1){
+//                        smallGame.image = #imageLiteral(resourceName: "x")
+//                    }else{
+//                        smallGame.image = #imageLiteral(resourceName: "o")
+//                    }
                 }
                 
                 //check to see if anyone has won overall game (only needs to be called when someone wins a smaller game
@@ -114,19 +123,19 @@ class gameVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     @IBAction func playAgain(_ sender: UIButton) {
         gameIsActive = true
         gameState = [[Int]](repeating: [Int](repeating: 0, count: 9), count: 9) //resets game Board
+        overallBoard = [0,0,0,0,0,0,0,0,0]
         playAgainButton.isHidden = true
-        
+        activeBoard = 9
         
         displayWinnerLabel.text = " "
         for i in 1 ... 9 {
-            if let smallGame = self.view.viewWithTag(i) as? UIImageView { //instead of smalller board, shows an X or O to show who won
-                
-                    smallGame.image = #imageLiteral(resourceName: "board")
+            if let smallGame = self.view.viewWithTag(i) as? UIImageView { //resets 9 smaller boards to game boards
+                smallGame.image = #imageLiteral(resourceName: "board")
             }
-        
         }
-        overallBoard = [0,0,0,0,0,0,0,0,0]
-            activePlayer = 1    // TODO: to loser goes first later
+        playAgain = true
+        board.reloadData()
+        activePlayer = 1    // TODO: to loser goes first later
     }
     
     func findBoard(square: Int) -> Int{
