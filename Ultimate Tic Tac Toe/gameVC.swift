@@ -10,6 +10,7 @@ import UIKit
 
 class gameVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    @IBOutlet weak var displayTurn: UILabel!
     @IBOutlet weak var displayWinnerLabel: UILabel!
     @IBOutlet weak var board: UICollectionView!
     @IBOutlet weak var playAgainButton: UIButton!
@@ -71,6 +72,7 @@ class gameVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             }else{
                 activeBoard = index //the new active board is the index selected in the smaller board
             }
+            
             if let smallGame = self.view.viewWithTag(activeBoard+1) as? UIImageView { //highlight the new active board
                     smallGame.backgroundColor = UIColor.yellow.withAlphaComponent(0.3)
             }
@@ -83,21 +85,18 @@ class gameVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 //cell.marker.image = #imageLiteral(resourceName: "o") //place o in the square picked
                 activePlayer = 1 //switch active player to player 1
             }
+            
+            displayTurn.text = "Player " + String(activePlayer) + "'s turn"
         }
         
         for i in winningBoards{ //checks current board against winning combinations (in smaller board)
             if (gameState[board][i[0]] != 0 && gameState[board][i[0]] == gameState[board][i[1]] && gameState[board][i[1]] == gameState[board][i[2]]){ //someone has won smaller game
                 
                 overallBoard[board] = gameState[board][i[0]] //update overallBoard w/ 1 or 2 to indicate who won smaller board
-                activeBoard = 9 //set active board to -1 so the player can choose any board
-                
+    
                 if let smallGame = self.view.viewWithTag(board+1) as? UIImageView { //instead of smalller board, shows an X or O to show who won
                     smallGame.image = icons[overallBoard[board]-1]
-//                    if (overallBoard[board] == 1){
-//                        smallGame.image = #imageLiteral(resourceName: "x")
-//                    }else{
-//                        smallGame.image = #imageLiteral(resourceName: "o")
-//                    }
+                    smallGame.backgroundColor = UIColor.clear
                 }
                 
                 //check to see if anyone has won overall game (only needs to be called when someone wins a smaller game
@@ -131,7 +130,11 @@ class gameVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         for i in 1 ... 9 {
             if let smallGame = self.view.viewWithTag(i) as? UIImageView { //resets 9 smaller boards to game boards
                 smallGame.image = #imageLiteral(resourceName: "board")
+                smallGame.backgroundColor = UIColor.clear
             }
+        }
+        if let overallGame = self.view.viewWithTag(10) as? UIImageView { //highlight the entire board
+            overallGame.backgroundColor = UIColor.yellow.withAlphaComponent(0.3)
         }
         playAgain = true
         board.reloadData()

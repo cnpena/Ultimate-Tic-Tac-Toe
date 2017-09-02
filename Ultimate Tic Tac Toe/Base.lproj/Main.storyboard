@@ -87,6 +87,7 @@
                             </collectionView>
                             <imageView userInteractionEnabled="NO" tag="10" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board" translatesAutoresizingMaskIntoConstraints="NO" id="lco-rG-s7M" userLabel="large board">
                                 <rect key="frame" x="-7.5" y="138.5" width="390" height="390"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="0.31146072247706424" colorSpace="calibratedRGB"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7f-CF-1cT">
                                 <rect key="frame" x="187" y="553" width="0.0" height="0.0"/>
@@ -113,6 +114,12 @@
                                     <action selector="playAgain:" destination="BYZ-38-t0r" eventType="touchDown" id="gP6-ak-B8Z"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 1's turn" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgc-vA-65X">
+                                <rect key="frame" x="134" y="97.5" width="106.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -133,11 +140,13 @@
                             <constraint firstItem="mms-02-52U" firstAttribute="leading" secondItem="CMj-lK-VCE" secondAttribute="trailing" id="HmP-iQ-Sot"/>
                             <constraint firstItem="NI8-7F-k4V" firstAttribute="leading" secondItem="QhE-vu-EbD" secondAttribute="trailing" id="I9V-Vn-foe"/>
                             <constraint firstItem="LmF-ew-hip" firstAttribute="top" secondItem="CMj-lK-VCE" secondAttribute="bottom" id="IDQ-x7-xQ8"/>
+                            <constraint firstItem="lco-rG-s7M" firstAttribute="top" secondItem="kgc-vA-65X" secondAttribute="bottom" constant="20" id="IHW-hD-rBS"/>
                             <constraint firstItem="IAg-rj-uQL" firstAttribute="top" secondItem="mms-02-52U" secondAttribute="bottom" id="Iah-1P-KtB"/>
                             <constraint firstItem="hev-i2-68S" firstAttribute="top" secondItem="O7f-CF-1cT" secondAttribute="bottom" constant="15" id="Jw1-oN-FlV"/>
                             <constraint firstItem="6vu-S2-uhN" firstAttribute="top" secondItem="NI8-7F-k4V" secondAttribute="bottom" id="KgY-RX-wz7"/>
                             <constraint firstItem="mms-02-52U" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OaP-zU-2qy"/>
                             <constraint firstItem="NI8-7F-k4V" firstAttribute="width" secondItem="mms-02-52U" secondAttribute="width" id="P3a-6E-YHC"/>
+                            <constraint firstItem="kgc-vA-65X" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UO7-KN-clw"/>
                             <constraint firstItem="lco-rG-s7M" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="15" id="UjI-lZ-aLI"/>
                             <constraint firstItem="LmF-ew-hip" firstAttribute="width" secondItem="mms-02-52U" secondAttribute="width" id="VJm-f3-SUY"/>
                             <constraint firstItem="IAg-rj-uQL" firstAttribute="width" secondItem="mms-02-52U" secondAttribute="width" id="VqE-Fh-kzg"/>
@@ -168,6 +177,7 @@
                     </view>
                     <connections>
                         <outlet property="board" destination="vwZ-t4-eER" id="dOU-Ox-yBk"/>
+                        <outlet property="displayTurn" destination="kgc-vA-65X" id="aXd-MI-wir"/>
                         <outlet property="displayWinnerLabel" destination="O7f-CF-1cT" id="IYR-5p-M6a"/>
                         <outlet property="playAgainButton" destination="hev-i2-68S" id="qhR-WG-0tY"/>
                     </connections>
