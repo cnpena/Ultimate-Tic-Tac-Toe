@@ -59,15 +59,21 @@ class gameVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         let index = row*3+col
         let board = findBoard(square: square)
     
-        //before placing a piece, check if the square is empty, the game is still active and this is the allowed board to work on (or this is the first turn)
-        if(gameState[board][index] == 0 && gameIsActive && (board == activeBoard || activeBoard == 9)){
+        //to place a piece, the following conditions must be met:
+            //1) gameState[board][index] == 0, the current space is empty
+            //2) gameIsActive, the game is still active (boolean variable)
+            //3) overallBoard[board] == 0, this board hasnt already been won
+            //4) board == activeBoard, this is the currently active board
+                    //or, activeBoard == 9, this is when the user can choose any board
+        
+        if(gameState[board][index] == 0 && gameIsActive && overallBoard[board] == 0 && (board == activeBoard || activeBoard == 9)){
             gameState[board][index] = activePlayer //update gameState w/ 1 or 2 to indicate who placed their piece
             
             if let smallGame = self.view.viewWithTag(activeBoard+1) as? UIImageView { //clear the previous active board so it's no longer highlighted
                 smallGame.backgroundColor = UIColor.clear
             }
             
-            if(overallBoard[index] > 0){
+            if(overallBoard[index] > 0){ //if the user chooses a square in which the larger board has already been won, allow the next player to choose any square
                 activeBoard = 9
             }else{
                 activeBoard = index //the new active board is the index selected in the smaller board
@@ -138,7 +144,12 @@ class gameVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         }
         playAgain = true
         board.reloadData()
-        activePlayer = 1    // TODO: to loser goes first later
+        activePlayer = randomInt(min: 1, max: 2)
+    }
+    
+    //picks a random int
+    func randomInt(min: Int, max:Int) -> Int {
+        return min + Int(arc4random_uniform(UInt32(max - min + 1)))
     }
     
     func findBoard(square: Int) -> Int{
